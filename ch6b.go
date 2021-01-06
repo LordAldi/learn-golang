@@ -10,6 +10,9 @@ func first() {
 func second() {
 	fmt.Println("2nd")
 }
+func one(xPtr *int) {
+	*xPtr = 1
+}
 func main() {
 	// defer second()
 	// first()
@@ -19,10 +22,14 @@ func main() {
 	// f, _ := os.Open(filename)
 	// defer f.Close()
 
-	defer func() {
-		str := recover()
-		fmt.Println(str)
-	}()
-	panic("PANIC")
+	// defer func() {
+	// 	str := recover()
+	// 	fmt.Println(str)
+	// }()
+	// panic("PANIC")
+
+	xPtr := new(int)
+	one(xPtr)
+	fmt.Println(*xPtr) // x is 1
 
 }
